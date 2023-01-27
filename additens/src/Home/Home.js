@@ -12,19 +12,11 @@ function Home(){
             const person = { email: email, firstname: firstname}
             setPeople((people)=>{
                 const { email, firstname} = people;
-                [...people, person ].map(() =>{
-                    return (
-                        <div>
-                            <h1>
-                                {firstname}
-                            </h1>
-                            <p>
-                                {email}
-                            </p>
-                        </div>
-                    )
+                return [...people, person ]
 
-
+            
+      setFirstName('');
+      setEmail('');
                 })
             })
 
@@ -59,6 +51,15 @@ function Home(){
                     </input>
                 </div>
             </form>
+            {people.map((person, index) => {
+          const { id, firstName, email } = person;
+          return (
+            <div className='item' key={id}>
+              <h4>{firstName}</h4>
+              <p>{email}</p>
+            </div>
+          );
+        })}
         </article>
     )
 }
